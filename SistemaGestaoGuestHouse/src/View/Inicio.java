@@ -83,10 +83,30 @@ public class Inicio extends JFrame {
         //labels
         JLabel lbtext5= new JLabel("Crie sua conta");
         JLabel lbtext6= new JLabel("Cadastrando seus dados");
+        JLabel lbnome= new JLabel("NOME");
+        JLabel lbemail= new JLabel("EMAIL");
+        JLabel lbsenha= new JLabel("SENHA");
 
-        //posicionamento e adicao de componentes
+        //caixas de texto
+        JTextField tfnome= new JTextField(30);
+        JTextField tfemail= new JTextField(30);
+        JTextField tfsenha= new JTextField(30);
+        JButton btncadastrar= new JButton("CADASTRAR");
+
+        //posicionamento e adicao de labels
+        painel2.add(lbnome).setBounds(70,100,300,30);
+        painel2.add(lbemail).setBounds(70,160,300,30);
+        painel2.add(lbsenha).setBounds(70,230,300,30);
         painel2.add(lbtext5).setBounds(170,30,300,30);
         painel2.add(lbtext6).setBounds(140,60,300,30);
+
+        //posicionamento e adicao de caixas de texto
+        painel2.add(tfnome).setBounds(70,130,350,30);
+        painel2.add(tfemail).setBounds(70,190,350,30);
+        painel2.add(tfsenha).setBounds(70,260,350,30);
+        painel2.add(btncadastrar).setBounds(160,350,150,25);
+
+
 
         //fontes
         lbtext5.setFont(new Font("Tahoma",Font.BOLD,25));
