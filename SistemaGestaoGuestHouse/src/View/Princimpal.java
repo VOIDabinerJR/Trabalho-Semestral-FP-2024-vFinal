@@ -28,7 +28,7 @@ public class Princimpal extends JFrame {
         JLabel lbmenu= new JLabel("MENU");
         JButton btnreservar=new JButton("Reservar Quarto");
         JButton btnverificar=new JButton("Verificar Disponibilidade");
-        JButton btncadastrar=new JButton("Cadastrar Funcionario");
+        JButton btncadastrar=new JButton("Cadastrar ");
         JButton btnsair=new JButton("Sair");
 
 
@@ -58,6 +58,18 @@ public class Princimpal extends JFrame {
                 }
             }
         });
+
+        //acao para p botao cadastrar
+        btncadastrar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CadastroUser ircadastrar= new CadastroUser();
+                ircadastrar.show();
+                dispose();
+
+            }
+        });
+
 
 
 
