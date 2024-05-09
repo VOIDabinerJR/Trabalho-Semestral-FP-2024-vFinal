@@ -17,7 +17,7 @@ public class Inicio extends JFrame {
         add(painel).setBounds(0,0,1150,650);
         painel.setBackground(ColorUIResource.lightGray);
 
-        //primeiro painel
+        // primeiro painel
         JPanel painel1=new JPanel(null){
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -33,6 +33,33 @@ public class Inicio extends JFrame {
             g2d.dispose();
         }//metodo para achatar as bordas do primeiro painel
     };
+        //Logo
+        ImageIcon imagem = new ImageIcon(getClass().getResource("logo.png"));
+        JLabel lbimg=new JLabel(imagem);
+        painel1.add(lbimg).setBounds(50,0,250,200);
+        
+        //labels
+        JLabel lbtext1= new JLabel("Bem-vindo de");
+        JLabel lbtext2= new JLabel("volta");
+        JLabel lbtext3= new JLabel("Acesse sua conta agora");
+        JLabel lbtext4= new JLabel("mesmo");
+        JButton btnentrar= new JButton("ENTRAR");
+
+        //posicionamento e adicao de componentes
+        painel1.add(lbtext1).setBounds(40,130,300,30);
+        painel1.add(lbtext2).setBounds(40,160,300,30);
+        painel1.add(lbtext3).setBounds(40,190,300,30);
+        painel1.add(lbtext4).setBounds(40,220,300,30);
+        painel1.add(btnentrar).setBounds(50,280,200,25);
+
+        //fontes
+        lbtext1.setFont(new Font("Tahoma",Font.BOLD,25));
+        lbtext2.setFont(new Font("Tahoma",Font.BOLD,25));
+        lbtext3.setFont(new Font("Tahoma",Font.BOLD,18));
+        lbtext4.setFont(new Font("Tahoma",Font.BOLD,18));
+
+
+
         painel1.setBackground(new Color(0, 239, 236));
         painel.add(painel1).setBounds(250,20,300,500);
 
