@@ -79,6 +79,20 @@ public class Inicio extends JFrame {
                 g2d.dispose();
             }//metodo para achatar as bordas do primeiro painel
         };
+
+        //labels
+        JLabel lbtext5= new JLabel("Crie sua conta");
+        JLabel lbtext6= new JLabel("Cadastrando seus dados");
+
+        //posicionamento e adicao de componentes
+        painel2.add(lbtext5).setBounds(170,30,300,30);
+        painel2.add(lbtext6).setBounds(140,60,300,30);
+
+        //fontes
+        lbtext5.setFont(new Font("Tahoma",Font.BOLD,25));
+        lbtext6.setFont(new Font("Tahoma",Font.BOLD,19));
+
+
         painel2.setBackground(new Color(0, 239, 236));
         painel.add(painel2).setBounds(580,20,500,500);
 
