@@ -3,6 +3,7 @@ package View;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.geom.RoundRectangle2D;
 
 public class Inicio extends JFrame {
@@ -112,9 +113,20 @@ public class Inicio extends JFrame {
         lbtext5.setFont(new Font("Tahoma",Font.BOLD,25));
         lbtext6.setFont(new Font("Tahoma",Font.BOLD,19));
 
+        //acoes do botao entrar
+        btnentrar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login irlogin = new Login();
+                irlogin.show();
+                dispose();
+            }
+        });
+
 
         painel2.setBackground(new Color(0, 239, 236));
         painel.add(painel2).setBounds(580,20,500,500);
+
 
 
         //fundo
