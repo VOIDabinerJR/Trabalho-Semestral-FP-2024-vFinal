@@ -53,7 +53,7 @@ public class CadastroUser extends JFrame {
         JTextField tfnome= new JTextField(30);
         JTextField tfnumerodoc= new JTextField(30);
         JTextField tfusername= new JTextField(30);
-        JTextField tfsenha= new JTextField(30);
+        JPasswordField tfsenha= new JPasswordField(30);
         JTextField tfendereco= new JTextField(30);
         JTextField tfcelular= new JTextField("(+258):");
         JTextField tfdata= new JTextField("DD/MM/AA");
@@ -157,12 +157,6 @@ public class CadastroUser extends JFrame {
                 JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
             }
         });
-
-
-
-
-
-
 
 
 
