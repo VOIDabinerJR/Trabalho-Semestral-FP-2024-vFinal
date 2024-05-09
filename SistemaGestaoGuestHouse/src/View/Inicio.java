@@ -91,7 +91,7 @@ public class Inicio extends JFrame {
         //caixas de texto
         JTextField tfnome= new JTextField(30);
         JTextField tfemail= new JTextField(30);
-        JTextField tfsenha= new JTextField(30);
+        JPasswordField tfsenha= new JPasswordField(30);
         JButton btncadastrar= new JButton("CADASTRAR");
 
         //posicionamento e adicao de labels

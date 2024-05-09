@@ -83,14 +83,14 @@ public class Login extends JFrame  {
             }
         });
         //acoes para o botao entrar
-//        btnentrar.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                princimpal irprincimpal= new princimpal();
-//                irprincimpal.show();
-//                dispose();
-//            }
-//        });
+        btnentrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Princimpal irprincimpal= new Princimpal();
+                irprincimpal.show();
+                dispose();
+            }
+        });
 
 
         painel1.setBackground(new Color(0, 239, 236));
