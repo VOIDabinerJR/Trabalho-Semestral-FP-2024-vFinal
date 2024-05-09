@@ -1,11 +1,21 @@
 package View;
 
+import Model.Relatorio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class Princimpal extends JFrame {
     public Princimpal (){
+        componentes();
+
+
+
+
+
+    }
+    public void componentes(){
         setSize(1100,650);//Configuracoes da Frame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -30,14 +40,23 @@ public class Princimpal extends JFrame {
         JButton btnverificar=new JButton("Verificar Disponibilidade");
         JButton btncadastrar=new JButton("Cadastrar ");
         JButton btnsair=new JButton("Sair");
+        JButton btncheckout = new JButton("Check Out");
+        JButton btnaddquarto = new JButton("Gerir Quartos");
+        JButton btnrelatorio = new JButton("Relatorios");
 
 
         //posicionamento
         lbmenu.setBounds(120,150,100,30);
         btnreservar.setBounds(30,200,250,25);
-        btnverificar.setBounds(30,250,250,25);
-        btncadastrar.setBounds(30,300,250,25);
-        btnsair.setBounds(30,350,250,25);
+        btncheckout.setBounds(30,250,250,25);
+        btnverificar.setBounds(30,300,250,25);
+        btnaddquarto.setBounds(30,350,250,25);
+        btncadastrar.setBounds(30,400,250,25);
+        btnrelatorio.setBounds(30,500,250,25);
+        btnsair.setBounds(30,550,250,25);
+
+
+
 
         //fontes
         lbmenu.setFont(new Font("Tahoma",Font.BOLD,20));
@@ -46,8 +65,13 @@ public class Princimpal extends JFrame {
         painel1.add(lbmenu);
         painel1.add(btnreservar);
         painel1.add(btnverificar);
+        painel1.add(btnaddquarto);
+        painel1.add(btncheckout);
         painel1.add(btncadastrar);
         painel1.add(btnsair);
+        painel1.add(btnrelatorio);
+
+
 
         //acao para p botao sair
         btnsair.addActionListener(new AbstractAction() {
@@ -73,6 +97,7 @@ public class Princimpal extends JFrame {
 
 
 
+
         //possicionamento do primeiro painel
         painel1.setBorder(BorderFactory.createLineBorder(Color.black));
         painel.add(painel1).setBounds(0,0,350,950);
@@ -82,7 +107,10 @@ public class Princimpal extends JFrame {
         //remocao das bordas dos botoes
         btnreservar.setBorderPainted(false);
         btncadastrar.setBorderPainted(false);
+        btncheckout.setBorderPainted(false);
         btnverificar.setBorderPainted(false);
+        btnaddquarto.setBorderPainted(false);
+        btnrelatorio.setBorderPainted(false);
         btnsair.setBorderPainted(false);
         //fontes
         //  btncadastrar.setBackground(new Color(0, 175, 198));
@@ -95,7 +123,77 @@ public class Princimpal extends JFrame {
         lbimg3.setBounds(0,0,1200,850);
         painel.add(lbimg3);
 
+        //acoes outros botoes
+        btnreservar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btncheckout.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"che");
+            }
+        });
+        btnverificar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+
+            }
+        });
+        btnaddquarto.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Quarto quarto= new Quarto();
+
+                lbimg3.hide();
+                painel.add(quarto).setBounds(350,0,750,950);
+            }
+        });
+        btncadastrar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnrelatorio.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String perfil ="admin";
+               if (perfil != "admin"){
+                   JOptionPane.showMessageDialog(null,"nao autorizado");
+               }else {
+                   Procurar procurar= new Procurar();
+
+                   lbimg3.hide();
+                  painel.add(procurar).setBounds(350,0,750,950);
+
+
+               }
+
+            }
+        });
+        btnsair.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+
+
+
     }
+
+
+
+
+
+
     public static void main(String[] args) {
         new Princimpal().setVisible(true);
 

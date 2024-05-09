@@ -7,11 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 
-public class CadastroUser extends JFrame {
+public class CadastroUser extends JDesktopPane {
     public CadastroUser(){
         setSize(1250,750);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(false);
         setLayout(null);
 
         //painel que ira prencher a frame
@@ -146,7 +144,7 @@ public class CadastroUser extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Princimpal voltarprimcimpal= new Princimpal();
                 voltarprimcimpal.show();
-                dispose();
+
             }
         });
 
@@ -177,4 +175,5 @@ public class CadastroUser extends JFrame {
         new CadastroUser().setVisible(true);
 
     }
+
 }
