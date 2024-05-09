@@ -1,20 +1,24 @@
 package View;
 
+import Conection.ConexaoMySQL;
+
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class CadastroUser extends JDesktopPane {
     public CadastroUser(){
-        setSize(1250,750);
+        setSize(750,950);
         setLayout(null);
 
         //painel que ira prencher a frame
         JPanel painel = new JPanel(null);
-        add(painel).setBounds(0,0,1250,750);
+        add(painel).setBounds(0,0,750,950);
         painel.setBackground(ColorUIResource.lightGray);
 
         // primeiro painel
@@ -152,7 +156,7 @@ public class CadastroUser extends JDesktopPane {
         btncadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+                cadastrar(tfnome,tfnumerodoc,"user",tfusername,tfsenha,"F",tfendereco,tfcelular,"foto/fotojpg","1");
             }
         });
 
@@ -161,18 +165,49 @@ public class CadastroUser extends JDesktopPane {
 
 
         painel1.setBackground(new Color(0, 239, 236));
-        painel.add(painel1).setBounds(250,25,850,650);
+        painel.add(painel1).setBounds(15,20,710,800);
 
 
 
         //fundo
-        ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
-        JLabel lbimg3 = new JLabel(imagem3);
-        lbimg3.setBounds(0,0,1260,1000);
-        painel.add(lbimg3);
+//        ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
+//        JLabel lbimg3 = new JLabel(imagem3);
+//        lbimg3.setBounds(0,0,1260,1000);
+//        painel.add(lbimg3);
     }
     public static void main(String[] args) {
         new CadastroUser().setVisible(true);
+
+    }
+    public String cadastrar(JTextField t1,JTextField t2,String t3, JTextField t4,JPasswordField t5,String t6,JTextField t7,JTextField t8,String t9,String t10){
+        String retorno="";
+        String sql = "insert into  usuario (nome,numerodocumento, perfil,username,senha,sexo,endereco,celular,foto, estado) values('" +t1.getText()+ "','" +t2.getText()+ "', '" +t3+ "','" +t4.getText()+ "','" +t5.getText()+ "','" +t6+ "','" +t7.getText()+ "','" +t8.getText()+ "','" +t9+ "','" +t10+ "');";
+        String idsql= "select * from usuario where username='"+t4.getText()+"';";
+        System.out.println(sql);
+        try {
+            PreparedStatement psth = ConexaoMySQL.obterConexao().prepareStatement(sql);
+            PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+
+            psth.execute();
+           ResultSet rs=  psth2.executeQuery();
+
+            if(true){
+
+                JOptionPane.showMessageDialog(null,"sucesso \n");
+
+
+            } else {
+               JOptionPane.showMessageDialog(null, "erro");
+            }
+
+
+        }catch (Exception e){
+
+        }
+
+
+
+        return retorno;
 
     }
 

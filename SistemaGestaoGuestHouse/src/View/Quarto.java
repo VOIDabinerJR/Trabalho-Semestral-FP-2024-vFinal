@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Quarto extends  JDesktopPane{
    public Quarto(){
@@ -100,7 +101,7 @@ public class Quarto extends  JDesktopPane{
        btnentrar.addActionListener(new AbstractAction() {
            @Override
            public void actionPerformed(ActionEvent e) {
-                cadastrarquarto(tfnumeroQ,tfnumerocamasQ,tfdescricaoQ,tftipoQ,tftarifaQ,"1","1");
+               lbusuario.setText(cadastrarquarto(tfnumeroQ,tfnumerocamasQ,tfdescricaoQ,tftipoQ,tftarifaQ,"1","1"));
            }
        });
 
@@ -111,14 +112,21 @@ public class Quarto extends  JDesktopPane{
    public String cadastrarquarto(JTextField t1,JTextField t2,JTextField t3,JTextField t4,JTextField t5,String t6,String t7){
        String retorno="";
        String sql = "insert into  quarto (nrquarto,nrcamas, descricao,tipo,tarifa,statusquarto,usuarioid) values('" +t1.getText()+ "','" +t2.getText()+ "', '" +t3.getText()+ "','" +t4.getText()+ "','" +t5.getText()+ "','" +t6+ "','" +t7+ "');";
+       String idsql= "select * from quarto where nrquarto='"+t1.getText()+"';";
        try {
            PreparedStatement psth = ConexaoMySQL.obterConexao().prepareStatement(sql);
+           PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
 
            psth.execute();
+           psth2.executeQuery();
 
            if(true){
                System.out.println(sql);
                JOptionPane.showMessageDialog(null,"sucesso");
+               ResultSet rs = psth2.executeQuery();
+               StringBuilder retornoSB = new StringBuilder();
+               retornoSB.append("ID QUARTO: ").append(rs.getString("idquarto")).append("\n");
+               retorno = retornoSB.toString();
 
            } else {
                System.out.println(t1.getText());
@@ -131,7 +139,7 @@ public class Quarto extends  JDesktopPane{
 
 
 
-       return retorno;
+      return retorno;
    }
 
     public static void main(String[] args) {

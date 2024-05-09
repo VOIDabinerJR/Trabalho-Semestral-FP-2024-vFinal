@@ -84,15 +84,6 @@ public class Princimpal extends JFrame {
         });
 
         //acao para p botao cadastrar
-        btncadastrar.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CadastroUser ircadastrar= new CadastroUser();
-                ircadastrar.show();
-                dispose();
-
-            }
-        });
 
 
 
@@ -150,13 +141,21 @@ public class Princimpal extends JFrame {
 
                 Quarto quarto= new Quarto();
 
-                lbimg3.hide();
+                painel.removeAll();
+                painel.add(painel1);
+
                 painel.add(quarto).setBounds(350,0,750,950);
             }
         });
         btncadastrar.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                CadastroUser ircadastrar= new CadastroUser();
+                painel.removeAll();
+                painel.add(painel1);
+
+                painel.add(ircadastrar).setBounds(350,0,750,950);
+
 
             }
         });
@@ -169,7 +168,8 @@ public class Princimpal extends JFrame {
                }else {
                    Procurar procurar= new Procurar();
 
-                   lbimg3.hide();
+                   painel.removeAll();
+                   painel.add(painel1);
                   painel.add(procurar).setBounds(350,0,750,950);
 
 
