@@ -165,15 +165,14 @@ public class CadastroUser extends JDesktopPane {
 
 
         painel1.setBackground(new Color(0, 239, 236));
-        painel.add(painel1).setBounds(15,20,710,800);
-
+        painel.add(painel1).setBounds(15,20,710,700);
 
 
         //fundo
-//        ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
-//        JLabel lbimg3 = new JLabel(imagem3);
-//        lbimg3.setBounds(0,0,1260,1000);
-//        painel.add(lbimg3);
+     ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
+     JLabel lbimg3 = new JLabel(imagem3);
+      lbimg3.setBounds(0,0,1260,1000);
+      painel.add(lbimg3);
     }
     public static void main(String[] args) {
         new CadastroUser().setVisible(true);

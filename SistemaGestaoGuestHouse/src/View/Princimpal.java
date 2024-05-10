@@ -16,7 +16,7 @@ public class Princimpal extends JFrame {
 
     }
     public void componentes(){
-        setSize(1100,650);//Configuracoes da Frame
+        setSize(1100,700);//Configuracoes da Frame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("Primcimpal");
@@ -24,7 +24,7 @@ public class Princimpal extends JFrame {
 
         //Criacao do painel que ira prencher a Frame
         JPanel painel= new JPanel(null);
-        add(painel).setBounds(0,0,1100,650);
+        add(painel).setBounds(0,0,1100,700);
         painel.setBackground(Color.darkGray);
 
         //Criacao do primeiro painel
@@ -170,7 +170,7 @@ public class Princimpal extends JFrame {
 
                    painel.removeAll();
                    painel.add(painel1);
-                  painel.add(procurar).setBounds(350,0,750,950);
+                  painel.add(procurar).setBounds(350,0,750,1150);
 
 
                }
