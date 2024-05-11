@@ -122,16 +122,16 @@ public class Quarto extends  JDesktopPane{
        try {
            PreparedStatement psth = ConexaoMySQL.obterConexao().prepareStatement(sql);
            PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
-
+           StringBuilder retornoSB = new StringBuilder();
            psth.execute();
-           psth2.executeQuery();
+           ResultSet re = psth2.executeQuery();
 
-           if(true){
+           if(re.next()){
                System.out.println(sql);
                JOptionPane.showMessageDialog(null,"sucesso");
-               ResultSet rs = psth2.executeQuery();
-               StringBuilder retornoSB = new StringBuilder();
-               retornoSB.append("ID QUARTO: ").append(rs.getString("idquarto")).append("\n");
+
+
+               retornoSB.append("ID QUARTO: ").append(re.getString("idquarto")).append("\n");
                retorno = retornoSB.toString();
 
            } else {
@@ -148,8 +148,91 @@ public class Quarto extends  JDesktopPane{
       return retorno;
    }
 
+
+
     public static void main(String[] args) {
         Quarto AA = new Quarto();
         AA.setVisible(true);
+    }
+    public int A1;
+    public int A2;
+    public String A3;
+    public int A4;
+    public String A5;
+    public String A6;
+    public Double A7;
+    public String A8;
+    public String A9;
+
+    public int getA1() {
+        return A1;
+    }
+
+    public void setA1(int a1) {
+        A1 = a1;
+    }
+
+    public int getA2() {
+        return A2;
+    }
+
+    public void setA2(int a2) {
+        A2 = a2;
+    }
+
+    public String getA3() {
+        return A3;
+    }
+
+    public void setA3(String a3) {
+        A3 = a3;
+    }
+
+    public int getA4() {
+        return A4;
+    }
+
+    public void setA4(int a4) {
+        A4 = a4;
+    }
+
+    public String getA5() {
+        return A5;
+    }
+
+    public void setA5(String a5) {
+        A5 = a5;
+    }
+
+    public String getA6() {
+        return A6;
+    }
+
+    public void setA6(String a6) {
+        A6 = a6;
+    }
+
+    public Double getA7() {
+        return A7;
+    }
+
+    public void setA7(Double a7) {
+        A7 = a7;
+    }
+
+    public String getA8() {
+        return A8;
+    }
+
+    public void setA8(String a8) {
+        A8 = a8;
+    }
+
+    public String getA9() {
+        return A9;
+    }
+
+    public void setA9(String a9) {
+        A9 = a9;
     }
 }
