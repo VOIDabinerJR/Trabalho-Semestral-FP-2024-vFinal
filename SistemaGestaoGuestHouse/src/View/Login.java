@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.*;
 
 public class Login extends JFrame  {
+
     public Login(){
 
 
@@ -106,7 +107,8 @@ public class Login extends JFrame  {
         //acoes para o botao entrar
         btnentrar2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                lblerrologin.setText(logar(tfnome,tfemail));
+
+                lblerrologin.setText( logar(tfnome,tfemail));
             }
         });
 

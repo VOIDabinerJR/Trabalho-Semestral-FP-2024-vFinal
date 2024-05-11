@@ -1,10 +1,9 @@
 package View;
 
-import Model.Relatorio;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 public class Princimpal extends JFrame {
     public Princimpal (){
@@ -124,14 +123,34 @@ public class Princimpal extends JFrame {
         btncheckout.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"che");
+                Checkout checkout= new Checkout();
+
+                painel.removeAll();
+                painel.add(painel1);
+
+                painel.add(checkout).setBounds(350,0,750,950);
             }
         });
         btnverificar.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                QuartosDisponiveis qd= new QuartosDisponiveis();
 
+                painel.removeAll();
+                painel.add(painel1);
 
+//                painel.add(qd).setBounds(350,0,750,950);
+                JDesktopPane desktopPane = new JDesktopPane();
+                // Adicionar o JInternalFrame ao JDesktopPane
+                QuartosDisponiveis quartosDisponiveis = null;
+                try {
+                    quartosDisponiveis = new QuartosDisponiveis();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                desktopPane.add(quartosDisponiveis);
+                quartosDisponiveis.setVisible(true);
+                painel.add(desktopPane).setBounds(350,0,750,950);
 
             }
         });
@@ -154,7 +173,7 @@ public class Princimpal extends JFrame {
                 painel.removeAll();
                 painel.add(painel1);
 
-                painel.add(ircadastrar).setBounds(350,0,750,950);
+                painel.add(ircadastrar).setBounds(350,0,750,950)  ;
 
 
             }
@@ -166,11 +185,12 @@ public class Princimpal extends JFrame {
                if (perfil != "admin"){
                    JOptionPane.showMessageDialog(null,"nao autorizado");
                }else {
-                   Procurar procurar= new Procurar();
+                   Relatorio quarto= new Relatorio();
 
                    painel.removeAll();
                    painel.add(painel1);
-                  painel.add(procurar).setBounds(350,0,750,1150);
+
+                   painel.add(quarto).setBounds(350,0,750,950);
 
 
                }
