@@ -146,7 +146,7 @@ public class CadastroUser extends JDesktopPane {
         btnvoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Princimpal voltarprimcimpal= new Princimpal();
+                Principal voltarprimcimpal= new Principal();
                 voltarprimcimpal.show();
 
             }
@@ -165,7 +165,7 @@ public class CadastroUser extends JDesktopPane {
 
 
         painel1.setBackground(new Color(0, 239, 236));
-        painel.add(painel1).setBounds(15,20,710,700);
+        painel.add(painel1).setBounds(40,20,710,700);
 
 
         //fundo

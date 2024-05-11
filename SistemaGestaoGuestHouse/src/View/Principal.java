@@ -1,13 +1,11 @@
 package View;
 
-import Model.Relatorio;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class Princimpal extends JFrame {
-    public Princimpal (){
+public class Principal extends JFrame {
+    public Principal(){
         componentes();
 
 
@@ -16,7 +14,7 @@ public class Princimpal extends JFrame {
 
     }
     public void componentes(){
-        setSize(1100,700);//Configuracoes da Frame
+        setSize(1200,800);//Configuracoes da Frame
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("Primcimpal");
@@ -24,7 +22,7 @@ public class Princimpal extends JFrame {
 
         //Criacao do painel que ira prencher a Frame
         JPanel painel= new JPanel(null);
-        add(painel).setBounds(0,0,1100,700);
+        add(painel).setBounds(0,0,1200,800);
         painel.setBackground(Color.darkGray);
 
         //Criacao do primeiro painel
@@ -111,7 +109,7 @@ public class Princimpal extends JFrame {
         //fundo
         ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
         JLabel lbimg3 = new JLabel(imagem3);
-        lbimg3.setBounds(0,0,1200,850);
+        lbimg3.setBounds(0,0,1200,950);
         painel.add(lbimg3);
 
         //acoes outros botoes
@@ -190,12 +188,8 @@ public class Princimpal extends JFrame {
     }
 
 
-
-
-
-
     public static void main(String[] args) {
-        new Princimpal().setVisible(true);
+        new Principal().setVisible(true);
 
     }
 }

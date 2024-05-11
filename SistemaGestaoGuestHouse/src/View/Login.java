@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.*;
 
 public class Login extends JFrame  {
     public Login(){
@@ -136,7 +135,7 @@ public class Login extends JFrame  {
 
             if(rs.next()){
 
-                Princimpal irprincimpal= new Princimpal();
+                Principal irprincimpal= new Principal();
                 irprincimpal.show();
                 dispose();
 

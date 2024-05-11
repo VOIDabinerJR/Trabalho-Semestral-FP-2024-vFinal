@@ -13,7 +13,8 @@ public class Quarto extends  JDesktopPane{
    public Quarto(){
        this.setSize(750,900);
        JPanel painel = new JPanel(null);
-       add(painel).setBounds(0,50,750,900);
+      // painel.setBackground(new Color(0, 239, 236));
+       add(painel).setBounds(0,0,750,900);
        JPanel painel2 = new JPanel(null){
            protected void paintComponent(Graphics g) {
                super.paintComponent(g);
@@ -107,7 +108,12 @@ public class Quarto extends  JDesktopPane{
 
 
        painel2.setBackground(new Color(0, 239, 236));
-       painel.add(painel2).setBounds(80,20,500,500);
+       painel.add(painel2).setBounds(180,50,500,500);
+       //fundo
+       ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
+       JLabel lbimg3 = new JLabel(imagem3);
+       lbimg3.setBounds(0,0,1100,950);
+       painel.add(lbimg3);
    }
    public String cadastrarquarto(JTextField t1,JTextField t2,JTextField t3,JTextField t4,JTextField t5,String t6,String t7){
        String retorno="";
