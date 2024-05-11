@@ -117,6 +117,9 @@ public class Principal extends JFrame {
         btnreservar.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Reserva irReservar= new Reserva();
+                irReservar.show();
+                dispose();
 
             }
         });
