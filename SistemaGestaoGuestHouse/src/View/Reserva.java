@@ -1,16 +1,19 @@
 package View;
 
+
+import Conection.ConexaoMySQL;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import  java.sql.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class Reserva extends JFrame {
+public class Reserva extends JDesktopPane {
     public Reserva(){
         setSize(1300,650);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(false);
-        setLayout(null);
-        setLocationRelativeTo(null);
+
 
         //criacao do painel que ira prencher a frame
         JPanel painel = new JPanel(null);
@@ -68,7 +71,18 @@ public class Reserva extends JFrame {
         painel1.add(tfnome).setBounds(100,80,230,25);
         painel1.add(tfnr).setBounds(100,120,230,25);
         painel1.add(tfcontacto).setBounds(100,160,230,25);
+        JButton btnhospede= new JButton("Cadastrar");
+        painel1.add(btnhospede).setBounds(200,200,100,25);
+        btnhospede.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
 
+                try {
+                    lbuser.setText( cadastrarhospede(tfnome,tfnr,tfcontacto));
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         //fontes
         lbtext1.setFont(new Font("Tahoma",Font.BOLD,20));
@@ -133,7 +147,7 @@ public class Reserva extends JFrame {
         painel2.add(lbnrQ).setBounds(20,200,200,25);
         painel2.add(lbstatus).setBounds(20,240,200,25);
         painel2.add(lbdata).setBounds(20,280,60,25);
-        painel2.add(lbuser1).setBounds(20,330,60,25);
+        painel2.add(lbuser1).setBounds(20,330,120,25);
 
 
         //Possicionamento e adicao de caixas de texto
@@ -141,7 +155,19 @@ public class Reserva extends JFrame {
         painel2.add(tfckin).setBounds(140,120,230,25);
         painel2.add(tfchout).setBounds(140,160,230,25);
         painel2.add(tfnrQ).setBounds(140,200,230,25);
+        JButton btnreserva= new JButton("Reservar");
+        painel2.add(btnreserva).setBounds(200,300,100,25);
+        btnreserva.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
 
+                try {
+                    lbuser1.setText( reservar(tfid,tfckin,tfchout,tfnrQ));
+                    //idhospede, datacheckin, datacheckout, nrquarto
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
 
         //fontes das labels
@@ -196,7 +222,7 @@ public class Reserva extends JFrame {
         JTextField tfidreserv= new JTextField();
         JTextField tfprec=new JTextField();
         JTextField tfvalorp=new JTextField();
-        JTextField tftroc=new JTextField();
+        JLabel tftroc=new JLabel();
 
 
 
@@ -208,7 +234,7 @@ public class Reserva extends JFrame {
         painel3.add(lbvalorp).setBounds(20,160,200,25);
         painel3.add(lbtroc).setBounds(20,200,200,25);
         painel3.add(lbdata2).setBounds(20,280,60,25);
-        painel3.add(lbuser2).setBounds(20,330,60,25);
+        painel3.add(lbuser2).setBounds(20,330,120,25);
 
 
         //Possicionamento e adicao de caixas de texto
@@ -216,6 +242,19 @@ public class Reserva extends JFrame {
         painel3.add(tfprec).setBounds(120,120,200,25);
         painel3.add(tfvalorp).setBounds(120,160,200,25);
         painel3.add(tftroc).setBounds(120,200,200,25);
+        JButton btnCheckin= new JButton("Check In");
+        painel3.add(btnCheckin).setBounds(200,300,100,25);
+        btnCheckin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    lbuser2.setText( checkin(tfidreserv,tfprec,tfvalorp));
+                    tftroc.setText(troco(tfvalorp,tfprec));
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
 
 
@@ -246,8 +285,155 @@ public class Reserva extends JFrame {
 
     }
 
+
+
+
     public static void main(String[] args) {
         new Reserva().setVisible(true);
 
+
     }
+
+    public String cadastrarhospede(JTextField t1,JTextField t2,JTextField t3 ) throws SQLException {
+        String retorno="";
+        String sql = "insert into hospede (nome, nrdocumento, contacto) values ('"+t1.getText()+"','"+t2.getText()+"','"+t3.getText()+"');";
+        PreparedStatement pst = null;
+        try {
+            pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(sql);
+        pst.execute();
+
+        String idsql= "select * from hospede where nrdocumento='"+t2.getText()+"';";
+        PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+        StringBuilder retornoSB = new StringBuilder();
+        ResultSet rs = psth2.executeQuery();
+
+        if(rs.next()){
+            System.out.println(sql);
+            JOptionPane.showMessageDialog(null,"sucesso");
+
+
+            retornoSB.append("ID HOSPEDE: ").append(rs.getString("idhospede")).append("\n");
+            retorno = retornoSB.toString();
+
+        } else {
+            System.out.println(t1.getText());
+            JOptionPane.showMessageDialog(null, "erro");
+        }
+
+
+
+        return retorno;
+
+    }
+    public String reservar(JTextField t1,JTextField t2,JTextField t3,JTextField t4) throws SQLException {
+        String retorno="";
+        String sql = "insert into reserva (idhospede, datacheckin, datacheckout, nrquarto,statusreserva, usuarioid) values ('"+t1.getText()+"','"+t2.getText()+"','"+t3.getText()+"','"+t4.getText()+"','1','1');";
+        PreparedStatement pst = null;
+        try {
+            pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(sql);
+        pst.execute();
+
+        String idsql= "select * from quarto where nrquarto='"+t4.getText()+"';";
+        PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+        StringBuilder idq = new StringBuilder();
+        ResultSet rs = psth2.executeQuery();
+
+
+        if(rs.next()){
+            System.out.println(sql);
+            JOptionPane.showMessageDialog(null,"sucesso");
+
+
+            idq.append(rs.getString("idhospede"));
+
+
+        } else {
+            System.out.println(t1.getText());
+        }
+
+
+
+        String idsql3= "select * from reserva where idhospede='"+t1.getText()+"';";
+        PreparedStatement psth3 = ConexaoMySQL.obterConexao().prepareStatement(idsql3);
+        StringBuilder retornoSB = new StringBuilder();
+        ResultSet rs1 = psth3.executeQuery();
+
+        if(rs1.next()){
+            System.out.println(sql);
+            JOptionPane.showMessageDialog(null,"sucesso");
+
+
+            retornoSB.append("ID RESERVA: ").append(rs1.getString("idreserva")).append("\n");
+            retorno = retornoSB.toString();
+
+        } else {
+            System.out.println(t1.getText());
+            JOptionPane.showMessageDialog(null, "erro");
+        }
+
+
+
+
+
+        return retorno;
+
+
+
+
+    }
+    public String checkin(JTextField t1,JTextField t3, JTextField t5) throws SQLException {
+        String retorno="";
+        String sql = "insert into checkin (idhospede, preco, valorpago, usuarioid, statusquarto) values ('"+t1.getText()+"','"+t3.getText()+ "','"+t5.getText()+"','1','0');";
+        PreparedStatement pst = null;
+        try {
+            pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(sql);
+        pst.execute();
+
+        String idsql= "select * from checkin where idhospede='"+t1.getText()+"';";
+        PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+        StringBuilder idq = new StringBuilder();
+        ResultSet rs = psth2.executeQuery();
+
+
+        if(rs.next()){
+            System.out.println(idsql);
+            JOptionPane.showMessageDialog(null,"sucesso");
+
+
+            idq.append("ID CHECKIN: ").append(rs.getString("idcheckin")).append("\n");
+            retorno = idq.toString();
+
+
+        } else {
+            System.out.println(t1.getText());
+        }
+
+
+
+
+        return retorno;
+    }
+    public String troco(JTextField t1,JTextField t2){
+        double tt1= Double.parseDouble(t1.getText().toString());
+        double tt2= Double.parseDouble(t2.getText().toString());
+        double tt3 = (double) (tt1-tt2);
+       String t3 = (tt3+"");
+        System.out.println(t3);
+
+
+        return t3;
+    }
+
 }

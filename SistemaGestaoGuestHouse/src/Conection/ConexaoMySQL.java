@@ -12,7 +12,7 @@ public class ConexaoMySQL  {
     private static Connection connection;
     private static String URL = "jdbc:mysql://127.0.0.1:3306/guesthouse";
     private static String USER = "root";
-    private static String PASSWORD = "";
+    private static String PASSWORD = "0000";
 
 
     public static Connection obterConexao() throws SQLException {

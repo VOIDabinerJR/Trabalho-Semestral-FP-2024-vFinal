@@ -117,9 +117,15 @@ public class Principal extends JFrame {
         btnreservar.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Reserva irReservar= new Reserva();
-                irReservar.show();
-                dispose();
+                Reserva reserva= new Reserva();
+
+
+                painel.removeAll();
+                painel.add(painel1);
+                setSize(1650,800);
+                add(painel).setBounds(0,0,1650,800);
+
+                painel.add(reserva).setBounds(350,0,1300,950);
 
             }
         });
@@ -127,6 +133,7 @@ public class Principal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Checkout checkout= new Checkout();
+
 
                 painel.removeAll();
                 painel.add(painel1);
