@@ -146,7 +146,7 @@ public class CadastroUser extends JDesktopPane {
         btnvoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Principal voltarprimcimpal= new Principal();
+                PrincipalCadastro voltarprimcimpal= new PrincipalCadastro();
                 voltarprimcimpal.show();
 
             }
@@ -171,7 +171,7 @@ public class CadastroUser extends JDesktopPane {
         //fundo
      ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
      JLabel lbimg3 = new JLabel(imagem3);
-      lbimg3.setBounds(0,0,1260,1000);
+      lbimg3.setBounds(0,0,1460,1000);
       painel.add(lbimg3);
     }
     public static void main(String[] args) {

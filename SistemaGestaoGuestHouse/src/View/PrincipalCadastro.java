@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
-public class Principal extends JFrame {
-    public Principal(){
+public class PrincipalCadastro extends JFrame {
+    public PrincipalCadastro(){
         componentes();
 
 
@@ -63,13 +63,13 @@ public class Principal extends JFrame {
 
         //adicao de componentes
         painel1.add(lbmenu);
-        painel1.add(btnreservar);
-        painel1.add(btnverificar);
-        painel1.add(btnaddquarto);
-        painel1.add(btncheckout);
+//        painel1.add(btnreservar);
+//        painel1.add(btnverificar);
+//        painel1.add(btnaddquarto);
+//        painel1.add(btncheckout);
         painel1.add(btncadastrar);
-        painel1.add(btnsair);
-        painel1.add(btnrelatorio);
+//        painel1.add(btnsair);
+//        painel1.add(btnrelatorio);
 
 
 
@@ -96,13 +96,13 @@ public class Principal extends JFrame {
 
 
         //remocao das bordas dos botoes
-        btnreservar.setBorderPainted(false);
+//        btnreservar.setBorderPainted(false);
         btncadastrar.setBorderPainted(false);
-        btncheckout.setBorderPainted(false);
-        btnverificar.setBorderPainted(false);
-        btnaddquarto.setBorderPainted(false);
-        btnrelatorio.setBorderPainted(false);
-        btnsair.setBorderPainted(false);
+//        btncheckout.setBorderPainted(false);
+//        btnverificar.setBorderPainted(false);
+//        btnaddquarto.setBorderPainted(false);
+//        btnrelatorio.setBorderPainted(false);
+//        btnsair.setBorderPainted(false);
         //fontes
         //  btncadastrar.setBackground(new Color(0, 175, 198));
 
@@ -201,20 +201,20 @@ public class Principal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String perfil ="admin";
-               if (perfil != "admin"){
-                   JOptionPane.showMessageDialog(null,"nao autorizado");
-               }else {
-                   Relatorio quarto= new Relatorio();
+                if (perfil != "admin"){
+                    JOptionPane.showMessageDialog(null,"nao autorizado");
+                }else {
+                    Relatorio quarto= new Relatorio();
 
-                   painel.removeAll();
-                   painel.add(painel1);
-                   setSize(1200,800);//Configuracoes da Frame
-                   add(painel).setBounds(0,0,1200,800);
+                    painel.removeAll();
+                    painel.add(painel1);
+                    setSize(1200,800);//Configuracoes da Frame
+                    add(painel).setBounds(0,0,1200,800);
 
-                   painel.add(quarto).setBounds(350,0,1200,950);
+                    painel.add(quarto).setBounds(350,0,1200,950);
 
 
-               }
+                }
 
             }
         });

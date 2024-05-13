@@ -123,6 +123,24 @@ public class Inicio extends JFrame {
             }
         });
 
+        btncadastrar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PrincipalCadastro reserva= new PrincipalCadastro();
+                reserva.show();
+                dispose();
+
+
+                painel.removeAll();
+                painel.add(painel1);
+                setSize(1650,800);
+                add(painel).setBounds(0,0,1650,800);
+
+                painel.add(reserva).setBounds(350,0,1300,950);
+
+            }
+        });
+
 
         painel2.setBackground(new Color(0, 239, 236));
         painel.add(painel2).setBounds(580,20,500,500);
@@ -140,5 +158,35 @@ public class Inicio extends JFrame {
         new Inicio().setVisible(true);
 
     }
+//    public String cadastrar2()(JTextField t2, JPasswordField t1) {
+//
+//
+//
+//        String sql = "select * from usuario where username='" +t2.getText()+ "'and senha='" +t1.getText()+ "';";
+//        try {
+//
+//            PreparedStatement pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
+//
+//
+//            ResultSet rs = pst.executeQuery();
+//
+//            if(rs.next()){
+//
+//                Principal irprincimpal= new Principal();
+//                irprincimpal.show();
+//                dispose();
+//
+//            } else {
+//
+//                return "UserName ou senha invalios" ;
+//            }
+//
+//
+//        }catch (Exception e){
+//            System.out.println(e);
+//
+//        }
+//        return "";
+//    }
 
 }

@@ -137,7 +137,7 @@ public class Login extends JFrame  {
 
             if(rs.next()){
 
-                Principal irprincimpal= new Principal();
+                PrincipalCadastro irprincimpal= new PrincipalCadastro();
                 irprincimpal.show();
                 dispose();
 
