@@ -58,7 +58,7 @@ public class CadastroUser extends JDesktopPane {
         JPasswordField tfsenha= new JPasswordField(30);
         JTextField tfendereco= new JTextField(30);
         JTextField tfcelular= new JTextField("(+258):");
-        JTextField tfdata= new JTextField("DD/MM/AA");
+        JTextField tfdata= new JTextField(30);
 
 
 
@@ -180,7 +180,7 @@ public class CadastroUser extends JDesktopPane {
     }
     public String cadastrar(JTextField t1,JTextField t2,String t3, JTextField t4,JPasswordField t5,String t6,JTextField t7,JTextField t8,String t9,String t10){
         String retorno="";
-        String sql = "insert into  usuario (nome,numerodocumento, perfil,username,senha,sexo,endereco,celular,foto, estado) values('" +t1.getText()+ "','" +t2.getText()+ "', 'user','" +t4.getText()+ "','" +t5.getText()+ "','" +t6+ "','" +t7.getText()+ "','" +t8.getText()+ "','" +t9+ "','" +t10+ "');";
+        String sql = "insert into  usuario (nome,numerodocumento, perfil,username,senha,sexo,endereco,celular,foto, estado) values('" +t1.getText()+ "','" +t2.getText()+  "','" +t3+"','"+t4.getText()+ "','" +t5.getText()+ "','" +t6+ "','" +t7.getText()+ "','" +t8.getText()+ "','" +t9+ "','" +t10+ "');";
         String idsql= "select * from usuario where username='"+t4.getText()+"';";
         System.out.println(sql);
         try {

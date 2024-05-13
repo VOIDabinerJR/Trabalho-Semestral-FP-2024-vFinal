@@ -68,7 +68,7 @@ public class PrincipalCadastro extends JFrame {
 //        painel1.add(btnaddquarto);
 //        painel1.add(btncheckout);
         painel1.add(btncadastrar);
-//        painel1.add(btnsair);
+        painel1.add(btnsair);
 //        painel1.add(btnrelatorio);
 
 
