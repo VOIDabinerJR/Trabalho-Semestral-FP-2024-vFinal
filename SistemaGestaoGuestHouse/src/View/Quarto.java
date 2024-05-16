@@ -112,7 +112,7 @@ public class Quarto extends  JDesktopPane{
        //fundo
        ImageIcon imagem3 = new ImageIcon(getClass().getResource("fundo.jpg"));
        JLabel lbimg3 = new JLabel(imagem3);
-       lbimg3.setBounds(0,0,1100,950);
+       lbimg3.setBounds(0,0,1800,950);
        painel.add(lbimg3);
    }
    public String cadastrarquarto(JTextField t1,JTextField t2,JTextField t3,JTextField t4,JTextField t5,String t6,String t7){
@@ -131,7 +131,7 @@ public class Quarto extends  JDesktopPane{
                JOptionPane.showMessageDialog(null,"sucesso");
 
 
-               retornoSB.append("ID QUARTO: ").append(re.getString("idquarto")).append("\n");
+               retornoSB.append("ID QUARTO: ").append(re.getString("id")).append("\n");
                retorno = retornoSB.toString();
 
            } else {
@@ -151,7 +151,7 @@ public class Quarto extends  JDesktopPane{
 
 
     public static void main(String[] args) {
-        Quarto AA = new Quarto();
+        deletar AA = new deletar();
         AA.setVisible(true);
     }
     public int A1;

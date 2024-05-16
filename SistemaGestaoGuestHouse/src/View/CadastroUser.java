@@ -74,6 +74,8 @@ public class CadastroUser extends JDesktopPane {
         JButton btnvoltar= new JButton("VOLTAR");
         JButton btncadastrar= new JButton("CADASTRAR");
 
+// calendario
+//        JDat
 
         //posicionamento de  labels e adicao de componentes
         painel1.add(lbcadastro).setBounds(350,20,300,30);
@@ -96,7 +98,7 @@ public class CadastroUser extends JDesktopPane {
         painel1.add(tfsenha).setBounds(200,280,450,30);
         painel1.add(tfendereco).setBounds(200,370,450,30);
         painel1.add(tfcelular).setBounds(200,420,450,30);
-        painel1.add(tfdata).setBounds(200,480,450,30);
+//        painel1.add(calendario).setBounds(200,480,450,30);
 
 
         //possicionamento dos radiobuton

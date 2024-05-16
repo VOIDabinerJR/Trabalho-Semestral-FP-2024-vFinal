@@ -239,7 +239,7 @@ public class Relatorio extends JDesktopPane {
         //acoes para o botao entrar
         btnentrar2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Quarto quarto= new Quarto();
+                deletar quarto= new deletar();
 
                 try {
 

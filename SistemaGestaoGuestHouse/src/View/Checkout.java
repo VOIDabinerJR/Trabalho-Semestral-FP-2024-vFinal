@@ -107,19 +107,23 @@ public class Checkout extends JDesktopPane {
         System.out.println(sql);
         pst.execute();
 
-        String sql1 = "select * from checkin where idcheckin='"+t1.getText()+"';";
+        String sql1 = "select * from checkin where z='"+t1.getText()+"';";
         PreparedStatement pst1 = ConexaoMySQL.obterConexao().prepareStatement(sql1);
         ResultSet rs = pst1.executeQuery();
         System.out.println(sql1);
         StringBuilder idquarto = new StringBuilder();
 
-        if (rs.next()){idquarto.append(rs.getString("idquarto"));
-        }
+        if (rs.next()){idquarto.append(rs.getString("id"));
+        } else{ JOptionPane.showMessageDialog(null,"Check in nao encontrado");}
 
-        String sql2 = "update quarto set statusquarto='1' where idquarto='"+idquarto.toString()+"';";
-        PreparedStatement pst2 = ConexaoMySQL.obterConexao().prepareStatement(sql2);
-        pst2.execute();
-        System.out.println(sql2);
+        try {
+            String sql2 = "update quarto set statusquarto='1' where id='"+idquarto.toString()+"';";
+            PreparedStatement pst2 = ConexaoMySQL.obterConexao().prepareStatement(sql2);
+            pst2.execute();
+            System.out.println(sql2);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         return "Sucesso";
 

@@ -63,11 +63,11 @@ public class PrincipalCadastro extends JFrame {
 
         //adicao de componentes
         painel1.add(lbmenu);
-//        painel1.add(btnreservar);
-//        painel1.add(btnverificar);
+    painel1.add(btnreservar);
+   painel1.add(btnverificar);
 //        painel1.add(btnaddquarto);
-//        painel1.add(btncheckout);
-        painel1.add(btncadastrar);
+    painel1.add(btncheckout);
+ //       painel1.add(btncadastrar);
         painel1.add(btnsair);
 //        painel1.add(btnrelatorio);
 
@@ -96,15 +96,15 @@ public class PrincipalCadastro extends JFrame {
 
 
         //remocao das bordas dos botoes
-//        btnreservar.setBorderPainted(false);
-        btncadastrar.setBorderPainted(false);
-//        btncheckout.setBorderPainted(false);
-//        btnverificar.setBorderPainted(false);
+       btnreservar.setBorderPainted(false);
+   //     btncadastrar.setBorderPainted(false);
+       btncheckout.setBorderPainted(false);
+      btnverificar.setBorderPainted(false);
 //        btnaddquarto.setBorderPainted(false);
 //        btnrelatorio.setBorderPainted(false);
-//        btnsair.setBorderPainted(false);
+      btnsair.setBorderPainted(false);
         //fontes
-        //  btncadastrar.setBackground(new Color(0, 175, 198));
+       btncadastrar.setBackground(new Color(0, 175, 198));
 
 
 
@@ -173,7 +173,7 @@ public class PrincipalCadastro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Quarto quarto= new Quarto();
+                deletar quarto= new deletar();
 
                 painel.removeAll();
                 painel.add(painel1);

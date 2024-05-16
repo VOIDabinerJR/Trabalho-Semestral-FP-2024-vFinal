@@ -42,6 +42,7 @@ public class Principal extends JFrame {
         JButton btnsair=new JButton("Sair");
         JButton btncheckout = new JButton("Check Out");
         JButton btnaddquarto = new JButton("Gerir Quartos");
+        JButton btndeletar = new JButton("Deletar");
         JButton btnrelatorio = new JButton("Relatorios");
 
 
@@ -53,6 +54,7 @@ public class Principal extends JFrame {
         btnaddquarto.setBounds(30,350,250,25);
         btncadastrar.setBounds(30,400,250,25);
         btnrelatorio.setBounds(30,500,250,25);
+        btndeletar.setBounds(30,450,250,25);
         btnsair.setBounds(30,550,250,25);
 
 
@@ -69,6 +71,7 @@ public class Principal extends JFrame {
         painel1.add(btncheckout);
         painel1.add(btncadastrar);
         painel1.add(btnsair);
+        painel1.add(btndeletar);
         painel1.add(btnrelatorio);
 
 
@@ -186,13 +189,43 @@ public class Principal extends JFrame {
         btncadastrar.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CadastroUser ircadastrar= new CadastroUser();
-                painel.removeAll();
-                painel.add(painel1);
-                setSize(1200,800);//Configuracoes da Frame
-                add(painel).setBounds(0,0,1200,800);
+                String perfil ="admin";
+                if (perfil != "admin"){
+                    JOptionPane.showMessageDialog(null,"nao autorizado");
+                }else {
+                    CadastroUser ircadastrar= new CadastroUser();
+                    painel.removeAll();
+                    painel.add(painel1);
+                    setSize(1200,800);//Configuracoes da Frame
+                    add(painel).setBounds(0,0,1200,800);
 
-                painel.add(ircadastrar).setBounds(350,0,1200,950)  ;
+                    painel.add(ircadastrar).setBounds(350,0,1200,950)  ;
+
+
+
+                }
+
+
+            }
+        });
+        btndeletar.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String perfil ="admin";
+                if (perfil != "admin"){
+                    JOptionPane.showMessageDialog(null,"nao autorizado");
+                }else {
+                    deletar deletar= new deletar();
+                    painel.removeAll();
+                    painel.add(painel1);
+                    setSize(1200,800);//Configuracoes da Frame
+                    add(painel).setBounds(0,0,1200,800);
+
+                    painel.add(deletar).setBounds(350,0,1200,950)  ;
+
+
+                }
 
 
             }

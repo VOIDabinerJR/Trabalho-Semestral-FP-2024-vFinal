@@ -5,7 +5,6 @@ import Conection.ConexaoMySQL;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,10 +14,10 @@ import java.util.List;
 public class QuartosDisponiveis extends JInternalFrame {
 
 
-    public List<Quarto> obterDadosQ() throws SQLException {
+    public List<deletar> obterDadosQ() throws SQLException {
 
         String sql = "SELECT * FROM quarto;";
-        List<Quarto> quartos= new ArrayList<>();
+        List<deletar> quartos= new ArrayList<>();
 
         try {
             PreparedStatement pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
@@ -29,8 +28,8 @@ public class QuartosDisponiveis extends JInternalFrame {
 
 
             while (rs.next()) {
-                Quarto quart = new Quarto();
-                quart.setA1(rs.getInt("idQuarto"));
+                deletar quart = new deletar();
+                quart.setA1(rs.getInt("idquarto"));
                 quart.setA2(rs.getInt("nrQuarto"));
                 quart.setA3(rs.getString("tipo"));
                 quart.setA4(rs.getInt("nrcamas"));
@@ -54,7 +53,7 @@ public class QuartosDisponiveis extends JInternalFrame {
         model.setRowCount(0);
 
         // Obter os dados e preencher na tabela
-        for (Quarto q : obterDadosQ()) {
+        for (deletar q : obterDadosQ()) {
             model.addRow(new Object[]{
                     q.getA1(), q.getA2(), q.getA3(), q.getA4(), q.getA5(), q.getA6(), q.getA7(), q.getA8(), q.getA9()
             });

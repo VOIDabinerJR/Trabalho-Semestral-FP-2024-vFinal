@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -88,6 +90,18 @@ public class Login extends JFrame  {
         painel1.add(btnentrar2).setBounds(250,320,100,25);
         painel1.add(lblerrologin).setBounds(80,370,300,30);
 
+        tfnome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c=e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_DELETE){
+                    JOptionPane.showMessageDialog(null,"Insira apenas letras");
+                    e.consume();
+                }
+
+            }
+        });
+
 
         //fontes
         lbtext1.setFont(new Font("Tahoma",Font.BOLD,30));
@@ -134,12 +148,31 @@ public class Login extends JFrame  {
 
 
             ResultSet rs = pst.executeQuery();
+            String idsql= "select * from usuario where username='"+t2.getText()+"';";
+
+
 
             if(rs.next()){
+                PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+                StringBuilder retornoSB = new StringBuilder();
+                ResultSet re = psth2.executeQuery();
 
-                Principal irprincimpal= new Principal();
-                irprincimpal.show();
-                dispose();
+if (re.next()){
+    retornoSB.append(re.getString("perfil"));
+                if(retornoSB.toString().equals("admin")){
+                    System.out.println(retornoSB.toString());
+                    Principal irprincimpal= new Principal();
+                    irprincimpal.show();
+                    dispose();
+
+                } else {
+                    PrincipalCadastro irprincimpal= new PrincipalCadastro();
+                    irprincimpal.show();
+                    dispose();
+               }
+                }
+
+
 
             } else {
 
