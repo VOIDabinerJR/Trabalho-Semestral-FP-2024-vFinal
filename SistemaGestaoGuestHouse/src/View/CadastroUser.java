@@ -5,8 +5,7 @@ import Conection.ConexaoMySQL;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -87,7 +86,7 @@ public class CadastroUser extends JDesktopPane {
         painel1.add(lbsexo).setBounds(100,320,450,30);
         painel1.add(lbendereco).setBounds(100,370,450,30);
         painel1.add(lbcelular).setBounds(100,420,450,30);
-        painel1.add(lbdata).setBounds(100,480,450,30);
+       // painel1.add(lbdata).setBounds(100,480,450,30);
         painel1.add(lbestado).setBounds(100,530,450,30);
 
 
@@ -99,6 +98,42 @@ public class CadastroUser extends JDesktopPane {
         painel1.add(tfendereco).setBounds(200,370,450,30);
         painel1.add(tfcelular).setBounds(200,420,450,30);
 //        painel1.add(calendario).setBounds(200,480,450,30);
+        tfnumerodoc.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                String text = tfnumerodoc.getText();
+
+                // Verifica se o comprimento total é menor ou igual a 13
+                if (text.length() <= 13) {
+                    // Verifica se o último caractere é um número e os primeiros 12 são números
+                    if ((text.length() == 12 && !Character.isDigit(c)) || (text.length() < 12 && !Character.isDigit(c))) {
+                        e.consume(); // Ignora o caractere digitado
+                    }
+                } else {
+                    e.consume(); // Ignora o caractere digitado
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {}
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+
+        tfnome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c=e.getKeyChar();
+                if (!Character.isLetter(c) && c != KeyEvent.VK_DELETE){
+                    JOptionPane.showMessageDialog(null,"Insira apenas letras");
+                    e.consume();
+                }
+
+            }
+        });
+
 
 
         //possicionamento dos radiobuton
