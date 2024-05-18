@@ -61,6 +61,7 @@ public class CadastroUser extends JDesktopPane {
 
 
 
+
         //RadioButons
         JRadioButton rbtadmin= new JRadioButton("ADIM");
         JRadioButton rbtuser= new JRadioButton("USER");

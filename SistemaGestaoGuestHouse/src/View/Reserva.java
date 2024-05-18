@@ -122,12 +122,14 @@ public class Reserva extends JDesktopPane {
         JLabel lbstatus= new JLabel("Stutus Reserva:");
         JLabel lbdata= new JLabel("Data");
         JLabel lbuser1= new JLabel("User");
+        com.toedter.calendar.JDateChooser tfckin = new com.toedter.calendar.JDateChooser();
+        com.toedter.calendar.JDateChooser tfchout = new com.toedter.calendar.JDateChooser();
 
 
         //CAIXAS DE TEXTO
         JTextField tfid= new JTextField();
-        JTextField tfckin=new JTextField();
-        JTextField tfchout=new JTextField();
+//        JTextField tfckin=new JTextField();
+//        JTextField tfchout=new JTextField();
         JTextField tfnrQ=new JTextField();
 
         //radiButons
@@ -230,7 +232,7 @@ public class Reserva extends JDesktopPane {
         //possicionamento e adicao das labels no painel1
         painel3.add(lbtext3).setBounds(160,20,100,25);
         painel3.add(lbidreserv).setBounds(20,80,200,25);
-        painel3.add(lbprec).setBounds(30,120,200,25);
+//        painel3.add(lbprec).setBounds(30,120,200,25);
         painel3.add(lbvalorp).setBounds(20,160,200,25);
         painel3.add(lbtroc).setBounds(20,200,200,25);
         painel3.add(lbdata2).setBounds(20,280,60,25);
@@ -248,8 +250,9 @@ public class Reserva extends JDesktopPane {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    lbuser2.setText( checkin(tfidreserv,tfprec,tfvalorp));
-                    tftroc.setText(troco(tfvalorp,tfprec));
+                    lbuser2.setText( checkin(tfidreserv,tfvalorp));
+                    tftroc.setText(troco(tfvalorp));
+                    tfprec.setText(troco(tfvalorp));
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -329,9 +332,10 @@ public class Reserva extends JDesktopPane {
         return retorno;
 
     }
-    public String reservar(JTextField t1,JTextField t2,JTextField t3,JTextField t4) throws SQLException {
+    public String reservar(JTextField t1,com.toedter.calendar.JDateChooser t2,com.toedter.calendar.JDateChooser t3,JTextField t4) throws SQLException {
         String retorno="";
-        String sql = "insert into reserva (idhospede, datacheckin, datacheckout, nrquarto,statusreserva, usuarioid) values ('"+t1.getText()+"','"+t2.getText()+"','"+t3.getText()+"','"+t4.getText()+"','1','1');";
+        String sql = "insert into reserva (idhospede, datacheckin, datacheckout, nrquarto,statusreserva, usuarioid) values ('"+t1.getText()+"','00/00/0000','00/00/0000','"+t4.getText()+"','1','1');";
+        System.out.println(sql);
         PreparedStatement pst = null;
         try {
             pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
@@ -389,9 +393,9 @@ public class Reserva extends JDesktopPane {
 
 
     }
-    public String checkin(JTextField t1,JTextField t3, JTextField t5) throws SQLException {
+    public String checkin(JTextField t1, JTextField t5) throws SQLException {
         String retorno="";
-        String sql = "insert into checkin (idhospede, preco, valorpago, usuarioid, statusquarto) values ('"+t1.getText()+"','"+t3.getText()+ "','"+t5.getText()+"','1','0');";
+        String sql = "insert into checkin (idhospede,preco, valorpago, usuarioid, statusquarto) values ('"+t1.getText()+"','00','"+t5.getText()+"','1','0');";
         PreparedStatement pst = null;
         try {
             pst = ConexaoMySQL.obterConexao().prepareStatement(sql);
@@ -425,9 +429,23 @@ public class Reserva extends JDesktopPane {
 
         return retorno;
     }
-    public String troco(JTextField t1,JTextField t2){
+    public String troco(JTextField t1) throws SQLException {
+        String idsql= "select * from quarto where idquarto='27';";
+        PreparedStatement psth2 = ConexaoMySQL.obterConexao().prepareStatement(idsql);
+        StringBuilder preco = new StringBuilder();
+        ResultSet rs = psth2.executeQuery();
+
+
+        if(rs.next()){
+
+
+            preco.append(rs.getString("tarifa"));
+
+        } else {
+            System.out.println(t1.getText());
+        }
         double tt1= Double.parseDouble(t1.getText().toString());
-        double tt2= Double.parseDouble(t2.getText().toString());
+        double tt2= Double.parseDouble(preco.toString());
         double tt3 = (double) (tt1-tt2);
        String t3 = (tt3+"");
         System.out.println(t3);
