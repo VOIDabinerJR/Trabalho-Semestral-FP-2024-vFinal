@@ -190,7 +190,7 @@ public class Reserva extends JDesktopPane {
 
 
         painel2.setBackground(new Color(0, 239, 236));
-        painel.add(painel2).setBounds(410,70,410,400);
+        painel.add(painel2).setBounds(400,70,410,400);
 
         //criacao do terceiro painel
         JPanel painel3= new JPanel(null){
@@ -245,7 +245,7 @@ public class Reserva extends JDesktopPane {
         painel3.add(tfvalorp).setBounds(120,160,200,25);
         painel3.add(tftroc).setBounds(120,200,200,25);
         JButton btnCheckin= new JButton("Check In");
-        painel3.add(btnCheckin).setBounds(200,300,100,25);
+        painel3.add(btnCheckin).setBounds(180,300,100,25);
         btnCheckin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -273,7 +273,7 @@ public class Reserva extends JDesktopPane {
 
 
         painel3.setBackground(new Color(0, 239, 236));
-        painel.add(painel3).setBounds(860,70,350,400);
+        painel.add(painel3).setBounds(835,70,330,400);
 
 
 
